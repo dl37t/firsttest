@@ -1,1 +1,72 @@
-# firsttest
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для самой любимой ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff5f5;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        .love-letter {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #ff5252;
+        }
+    </style>
+</head>
+<body>
+    <div class="love-letter">
+        <h1>Моя любимая ❤️</h1>
+        <p>Ты — самое дорогое, что у меня есть. Каждый день с тобой — это счастье!</p>
+        <p>Спасибо, что ты есть. 💌</p>
+        <button id="smsButton">Получить секретное сообщение</button>
+    </div>
+
+    <script>
+        document.getElementById("smsButton").addEventListener("click", async () => {
+            const phone = prompt("Введи свой номер телефона (+7...):");
+            if (!phone) return;
+
+            // Отправляем запрос на сервер для отправки SMS (см. шаг 2)
+            try {
+                const response = await fetch("ВАШ_СЕРВЕР_ДЛЯ_SMS", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ phone: phone }),
+                });
+                
+                if (response.ok) {
+                    alert("Сообщение отправлено! Проверь телефон 💖");
+                } else {
+                    alert("Ошибка... Попробуй позже.");
+                }
+            } catch (error) {
+                alert("Что-то пошло не так. 😢");
+            }
+        });
+    </script>
+</body>
+</html>
